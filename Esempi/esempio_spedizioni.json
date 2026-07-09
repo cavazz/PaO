@@ -6,7 +6,7 @@
         "immagine": "",
         "indirizzo": "Via Roma 12, Torino",
         "peso": 1.2,
-        "prodotto": "Tastiera Meccanica Coffee75 - Switch Gateron Brown",
+        "prodotto": "G915 X LIGHTSPEED TKL - Switch Linear",
         "tipo": "ClientiStandard"
     },
     {
@@ -17,7 +17,7 @@
         "indirizzo": "Via Dante 5, Milano",
         "oreConsegnaGarantite": 24,
         "peso": 0.9,
-        "prodotto": "Tastiera Coffee65 Wireless - Switch Akko Pink",
+        "prodotto": "Tastiera magnetica MonsGeek M1 V5 HE - Switch Akko Astrolink",
         "tipo": "ClientiEspressa"
     },
     {
@@ -28,7 +28,7 @@
         "indirizzo": "Via dei Mille 20, Bologna",
         "nomeReviewer": "TechKeys_ITA",
         "peso": 1,
-        "prodotto": "Coffee75 Special Edition - Prototipo",
+        "prodotto": "Keychron K12 HE Wireless - Prototipo",
         "tipo": "ReviewerSponsor",
         "valoreProdottoOmaggio": 180
     },
@@ -40,7 +40,7 @@
         "indirizzo": "Via dell'Artigianato 8, Padova",
         "numeroOrdineAcquisto": "PO-2026-0143",
         "peso": 15,
-        "prodotto": "Switch Gateron Brown (confezione da 110)",
+        "prodotto": "CHERRY MX RGB BROWN Switch Kit (confezione da 23)",
         "quantitaColli": 20,
         "tipo": "RifornimentoStock"
     },
@@ -61,11 +61,11 @@
         "dataArrivoPrevista": "2026-10-15",
         "destinatario": "Magazzino Coffee Keys",
         "id": "CK-1006",
-        "idLottoProduzione": "GB-LATTE-01",
+        "idLottoProduzione": "ROG PBT KEYCAP SET AC03",
         "immagine": "",
         "indirizzo": "Via dell'Artigianato 8, Padova",
         "peso": 40,
-        "prodotto": "Keycap Set PBT Coffee Latte - Group Buy",
+        "prodotto": "ASUS ROG PBT Keycap Set AC03",
         "tipo": "GroupBuyInbound"
     }
 ]
