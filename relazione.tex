@@ -1,0 +1,131 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+\title{Relazione Progetto di Programmazione ad Oggetti\\\large Coffee Keys Logistics}
+\author{Alberto Cavalletto - Matricola 2116418\\Progetto svolto in coppia con Andrea Nogara - Matricola 2101078}
+\date{Anno accademico 2025/2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+
+Coffee Keys è un negozio (esiste davvero) specializzato in tastiere meccaniche custom, switch e keycap set. L'idea è di Andrea, che segue già questo mondo delle tastiere custom da un po'. Un negozio online come questo non vende soltanto: c'è un magazzino da rifornire, ci sono i resi da rimandare in garanzia quando qualcosa arriva rotto, capita di mandare qualche tastiera in omaggio a un recensore per farsi conoscere, e poi ci sono i group buy, cioè quando più persone prenotano insieme un lotto di keycap che arriva tutto in blocco dopo qualche mese di attesa (una cosa piuttosto comune in quel settore). Il nostro progetto tiene traccia di tutte queste spedizioni. C'è una lista con tutte le spedizioni registrate, filtrabile in tempo reale scrivendo nella barra di ricerca; cliccandone una si apre il dettaglio con il manifesto specifico di quel tipo e, quando c'è, la foto del prodotto. Da lì si può modificarla, eliminarla, oppure tornare indietro e creare una spedizione nuova con un form che cambia i campi richiesti in base al tipo scelto dal menù a tendina.
+
+Il progetto l'abbiamo fatto in coppia, seguendo l'architettura Model-View indicata dalle specifiche, senza Controller separato.
+
+\section{Classi principali del modello logico}
+
+Prima di metterci a scrivere codice ci siamo fatti la domanda: quali sono davvero i casi che un negozio come Coffee Keys deve gestire? Abbiamo cercato di far coincidere ogni classe concreta con uno di questi casi reali, invece di inventarne qualcuno a caso solo per arrivare al numero minimo di sottoclassi richiesto dalle specifiche.
+
+La classe base è \texttt{Spedizione}, astratta, e contiene gli attributi in comune a tutte le spedizioni indipendentemente dal tipo: id, destinatario, indirizzo, peso, prodotto e immagine. Ha due metodi virtuali puri, \texttt{getManifestoSpedizione()} e \texttt{toJson()}, che ogni sottoclasse è costretta a implementare a modo suo. Da \texttt{Spedizione} derivano sei classi concrete.
+
+\texttt{SpedizioneClientiStandard} è il caso più comune: un cliente ordina una tastiera e la riceve tramite un corriere qualsiasi, senza fretta particolare. Con \texttt{SpedizioneClientiEspressa} invece il cliente vuole la consegna garantita entro un certo numero di ore e paga qualcosa di più per quello. \texttt{SpedizioneReviewerSponsor} è un po' diversa dalle prime due perché non c'è un cliente che paga: il negozio manda in omaggio una tastiera a un recensore, di solito per farsi un po' di pubblicità online.
+
+Le altre tre riguardano la merce che entra invece di uscire dal magazzino. \texttt{SpedizioneRifornimentoStock} è la merce che arriva da un fornitore per riempire lo stock. \texttt{SpedizioneResoFabbrica} sono invece i prodotti difettosi che bisogna rimandare al produttore per farsi rimborsare o sostituire in garanzia. Infine \texttt{SpedizioneGroupBuyInbound} rappresenta l'arrivo di un lotto da un group buy: nel mondo delle tastiere custom è comune che più persone prenotino insieme un lotto di produzione (per esempio un set di keycap) versando un acconto, e il lotto arrivi tutto insieme dopo qualche mese.
+
+Ognuna delle sei ha poi i suoi attributi specifici, coerenti col caso che rappresenta: \texttt{oreConsegnaGarantite} per l'espressa, \texttt{codiceRMA} e \texttt{motivoReso} per il reso in fabbrica, \texttt{idLottoProduzione} e \texttt{accontoVersato} per il group buy, e così via per le altre.
+
+Fuori dalla gerarchia c'è \texttt{HubLogistica}, che gestisce l'elenco delle spedizioni in memoria tramite un vector di puntatori a \texttt{Spedizione}: aggiunta, rimozione, ricerca per id, e libera tutta la memoria nel distruttore quando l'applicazione chiude.
+
+\section{Polimorfismo}
+
+\texttt{HubLogistica} deve tenere insieme sei tipi di spedizione diversi nello stesso vettore, e non volevamo scrivere un controllo diverso in base al tipo ogni volta che serviva fare qualcosa. Abbiamo quindi lasciato che fosse ogni sottoclasse a sapere come comportarsi da sola, tramite due metodi virtuali non banali:
+
+\begin{itemize}
+  \item \texttt{getManifestoSpedizione()}: scrive il testo che si vede nel dettaglio, con campi diversi per ogni tipo (es. codice RMA e garanzia per un reso, data e lotto per un group buy)
+  \item \texttt{toJson()}: salva gli attributi dell'oggetto in un \texttt{QJsonObject}, scrivendo solo i campi che servono a quel tipo
+\end{itemize}
+
+In questo modo né la GUI né \texttt{HubLogistica} devono sapere che tipo di spedizione stanno gestendo in un dato momento: chiamano questi due metodi tramite il puntatore alla classe base, e viene fuori il comportamento giusto per ogni tipo senza bisogno di if o switch sul tipo dell'oggetto.
+
+Il campo \texttt{"tipo"} che viene scritto da \texttt{toJson()} non sostituisce il polimorfismo: si usa solo quando si carica un file, in \texttt{JsonConverter} (o in \texttt{XmlPersistenza} per l'XML), per capire quale costruttore chiamare e ricreare l'oggetto giusto. Da un file non si può capire il tipo C++ originale in nessun altro modo. Una volta che l'oggetto esiste, tutto il resto passa di nuovo dai metodi virtuali.
+
+\section{Persistenza dei dati}
+
+Abbiamo fatto due formati di persistenza, come richiesto per i progetti in coppia. Il JSON è servito principalmente per salvare e ricaricare lo stato dell'applicazione così com'è (è comodo perché QJsonObject lo gestisce quasi da solo), mentre l'XML lo abbiamo pensato più come formato di scambio: è un po' più verboso ma anche più leggibile da un occhio esterno o da un altro programma che dovesse leggere gli stessi dati senza conoscere la nostra applicazione.
+
+\begin{itemize}
+  \item JSON: \texttt{JsonFile} legge e scrive il file su disco, \texttt{JsonConverter} converte una \texttt{Spedizione} da/verso \texttt{QJsonObject}, \texttt{JsonReader} mette insieme i due per caricare o salvare tutta la lista
+  \item XML: \texttt{XmlPersistenza} legge e scrive con \texttt{QXmlStreamReader}/\texttt{QXmlStreamWriter}, con una logica per ricostruire gli oggetti indipendente da quella del JSON
+\end{itemize}
+
+Il caricamento e il salvataggio si fanno sempre dal menu File (Apri, Salva, Salva Come), che apre una finestra di dialogo. Non ci sono percorsi di file fissi scritti nel codice: il formato si capisce dall'estensione scelta dall'utente.
+
+\section{Funzionalità aggiuntive}
+
+\begin{itemize}
+  \item Ricerca parziale, case-insensitive e in tempo reale su id, prodotto, destinatario e indirizzo
+  \item Form di creazione/modifica con campi che cambiano dinamicamente in base al tipo di spedizione selezionato
+  \item Gestione di un'immagine del prodotto: selezione da file, copia automatica nella cartella Resources del progetto e anteprima nella vista di dettaglio, con messaggio di fallback se l'immagine non è disponibile
+  \item Richiesta di conferma prima di eliminare una spedizione o di perdere modifiche non salvate
+\end{itemize}
+
+\section{Ambiente di sviluppo ed esecuzione}
+
+Abbiamo sviluppato il progetto su Windows, con Qt Creator, Qt 6.11.1 e il compilatore MinGW. Il progetto deve compilare anche nel container Docker del corso, quindi non ci siamo fidati solo del nostro PC: abbiamo installato la stessa immagine Ubuntu con lo stesso Qt e lo stesso compilatore indicati nel Dockerfile su una macchina virtuale, e per fortuna il progetto si è compilato senza errori né warning anche lì.
+
+All'avvio l'applicazione parte senza spedizioni salvate: non abbiamo lasciato dati precaricati nel codice. Per questo abbiamo preparato, nella cartella Esempi fornita assieme al progetto, due file con una spedizione per ciascuno dei sei tipi: si possono caricare dal menu File per popolare subito l'applicazione e provare tutte le funzionalità senza dover inserire i dati a mano.
+
+\section{Rendicontazione ore previste e svolte}
+
+Tabella delle ore individuali (componente: Alberto Cavalletto):
+
+\begin{center}
+\begin{tabular}{|l|c|c|p{6cm}|}
+\hline
+\textbf{Fase} & \textbf{Previste} & \textbf{Effettive} & \textbf{Note} \\
+\hline
+Progettazione & 7 h & 7 h & Analisi requisiti dominio, progettazione gerarchia classi del Modello, cooperazione al diagramma UML. Concluso nei tempi previsti. \\
+\hline
+Sviluppo Modello & 11 h & 13 h & Scrittura gerarchia Spedizione e sottoclassi, gestione del polimorfismo. +2h per raffinare i metodi virtuali puri e l'uso corretto del polimorfismo. \\
+\hline
+Persistenza Dati & 12 h & 14 h & Moduli di salvataggio/caricamento JSON e XML. +2h per il debug del parsing XML e la gestione delle eccezioni. \\
+\hline
+Integrazione GUI & 5 h & 6 h & Supporto al collegamento tra Modello e View/segnali-slot. +1h per verificare la sincronizzazione dei dati tra vista e memoria. \\
+\hline
+Testing \& Fix & 4 h & 5 h & Test di tenuta della logica, verifica dei flussi, rifinitura. +1h per garantire l'assenza di memory leak. \\
+\hline
+Relazione & 3 h & 3 h & Stesura e revisione della relazione individuale. Concluso nei tempi previsti. \\
+\hline
+\textbf{Totale} & \textbf{42 h} & \textbf{48 h} & \\
+\hline
+\end{tabular}
+\end{center}
+
+La parte che ci ha portato via più tempo del previsto è stata la persistenza dei dati. Il JSON, grazie a \texttt{QJsonObject} e \texttt{QJsonDocument}, si è scritto abbastanza in fretta, ma quando siamo passati all'XML ci siamo accorti che \texttt{QXmlStreamReader} va gestito con più attenzione: bisogna seguire l'apertura e la chiusura di ogni singolo tag a mano, e all'inizio abbiamo perso un po' di tempo con dei parsing che si fermavano a metà file senza un errore chiaro. Anche lo sviluppo del Modello ha richiesto qualche ora in più di quanto avevamo preventivato, soprattutto per essere sicuri che i due metodi virtuali puri bastassero davvero a coprire tutti i sei casi senza dover mettere neanche un controllo sul tipo da qualche parte per pigrizia. Le altre fasi invece sono andate più o meno secondo i tempi che ci eravamo dati all'inizio.
+
+\section{Suddivisione delle attività tra i membri del gruppo}
+
+\subsection*{Alberto - Modello logico e persistenza}
+\begin{itemize}
+  \item Progettazione e scrittura della classe base \texttt{Spedizione} e delle sei classi concrete derivate
+  \item Implementazione di \texttt{HubLogistica}, il contenitore che gestisce in memoria l'elenco delle spedizioni (aggiunta, rimozione, ricerca)
+  \item Sviluppo della persistenza JSON (\texttt{JsonFile}, \texttt{JsonConverter}, \texttt{JsonReader})
+  \item Sviluppo della persistenza XML (\texttt{XmlPersistenza}), secondo formato richiesto per i progetti in coppia
+\end{itemize}
+
+\subsection*{Andrea - Interfaccia grafica}
+\begin{itemize}
+  \item Sviluppo di \texttt{MainWindow}, con la creazione dei menu (File, Spedizione, Modifica) e la gestione della navigazione tra le schermate
+  \item Realizzazione di \texttt{ListaSpedizioniWidget} (elenco e ricerca) e \texttt{DettaglioSpedizioneWidget} (visualizzazione del manifesto polimorfo)
+  \item Realizzazione di \texttt{FormSpedizioneWidget}, con i campi che cambiano dinamicamente in base al tipo di spedizione selezionato
+  \item Cura della disposizione dei layout e dell'aspetto dei pannelli
+\end{itemize}
+
+\subsection*{Attività svolte insieme}
+\begin{itemize}
+  \item Analisi del dominio logistico e progettazione della gerarchia delle classi, con relativo diagramma UML
+  \item Collegamento tra le view e il Model all'interno di \texttt{MainWindow}, tramite il meccanismo di segnali e slot di Qt
+  \item Testing dell'applicazione a runtime e verifica dell'assenza di memory leak
+\end{itemize}
+
+\end{document}

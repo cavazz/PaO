@@ -3151,6 +3151,20 @@ build/XmlPersistenza.o: ../../Model/XML/XmlPersistenza.cpp ../../Model/XML/XmlPe
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringconverter.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringconverter_base.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QMap \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qmap.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qiterator.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qlist.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringlist.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qalgorithms.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/q20bit.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qsimd.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qscopeguard.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qshareddata.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qshareddata_impl.h \
 		../../Model/Items/Spedizione.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/QJsonObject \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qjsonobject.h \
@@ -3165,18 +3179,12 @@ build/XmlPersistenza.o: ../../Model/XML/XmlPersistenza.cpp ../../Model/XML/XmlPe
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qiodevicebase.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qscopedpointer.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qfloat16.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qmath.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qalgorithms.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/q20bit.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qsimd.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qtformat_impl.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qiterable.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qtaggedpointer.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qmetacontainer.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qcontainerinfo.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qscopeguard.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qshareddata.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qcalendar.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qlocale.h \
@@ -3186,13 +3194,6 @@ build/XmlPersistenza.o: ../../Model/XML/XmlPersistenza.cpp ../../Model/XML/XmlPe
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qcontiguouscache.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qsharedpointer.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qlist.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qiterator.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qbytearraylist.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringlist.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qstringmatcher.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qmap.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/qshareddata_impl.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qset.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qhash.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qvarlengtharray.h \
@@ -3213,7 +3214,13 @@ build/XmlPersistenza.o: ../../Model/XML/XmlPersistenza.cpp ../../Model/XML/XmlPe
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qendian.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qjsondocument.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qjsonparseerror.h \
-		../../Model/JSON/JsonConverter.h \
+		../../Model/Items/SpedizioneClientiStandard.h \
+		../../Model/Items/SpedizioneClientiEspressa.h \
+		../../Model/Items/SpedizioneReviewerSponsor.h \
+		../../Model/Items/SpedizioneRifornimentoStock.h \
+		../../Model/Items/SpedizioneResoFabbrica.h \
+		../../Model/Items/SpedizioneGroupBuyInbound.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QDate \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/QFile \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qfile.h \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qfiledevice.h \
@@ -3223,8 +3230,7 @@ build/XmlPersistenza.o: ../../Model/XML/XmlPersistenza.cpp ../../Model/XML/XmlPe
 		C:/Qt/6.11.1/mingw_64/include/QtCore/QIODevice \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/QXmlStreamWriter \
 		C:/Qt/6.11.1/mingw_64/include/QtCore/qxmlstream.h \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/QXmlStreamReader \
-		C:/Qt/6.11.1/mingw_64/include/QtCore/QStringList
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QXmlStreamReader
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build\XmlPersistenza.o ..\..\Model\XML\XmlPersistenza.cpp
 
 build/MainWindow.o: ../../View/MainWindow.cpp ../../View/MainWindow.h \
@@ -3495,6 +3501,7 @@ build/MainWindow.o: ../../View/MainWindow.cpp ../../View/MainWindow.h \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qcheckbox.h \
 		../../Model/JSON/JsonReader.h \
 		../../Model/XML/XmlPersistenza.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QMap \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/QMenuBar \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qmenubar.h \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qmenu.h \
@@ -4001,7 +4008,8 @@ build/DettaglioSpedizioneWidget.o: ../../View/DettaglioSpedizioneWidget.cpp ../.
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.11.1/mingw_64/include/QtGui/QFont
+		C:/Qt/6.11.1/mingw_64/include/QtGui/QFont \
+		C:/Qt/6.11.1/mingw_64/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build\DettaglioSpedizioneWidget.o ..\..\View\DettaglioSpedizioneWidget.cpp
 
 build/FormSpedizioneWidget.o: ../../View/FormSpedizioneWidget.cpp ../../View/FormSpedizioneWidget.h \
@@ -4277,7 +4285,17 @@ build/FormSpedizioneWidget.o: ../../View/FormSpedizioneWidget.cpp ../../View/For
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		C:/Qt/6.11.1/mingw_64/include/QtGui/QFont
+		C:/Qt/6.11.1/mingw_64/include/QtGui/QFont \
+		C:/Qt/6.11.1/mingw_64/include/QtWidgets/QFileDialog \
+		C:/Qt/6.11.1/mingw_64/include/QtWidgets/qfiledialog.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qdir.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qdirlisting.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qfiledevice.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qfile.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/qfileinfo.h \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QFileInfo \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QDir \
+		C:/Qt/6.11.1/mingw_64/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build\FormSpedizioneWidget.o ..\..\View\FormSpedizioneWidget.cpp
 
 build/moc_MainWindow.o: debug/moc_MainWindow.cpp 
