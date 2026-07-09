@@ -1,0 +1,71 @@
+[
+    {
+        "corriere": "BRT",
+        "destinatario": "Marco Bianchi",
+        "id": "CK-1001",
+        "immagine": "",
+        "indirizzo": "Via Roma 12, Torino",
+        "peso": 1.2,
+        "prodotto": "Tastiera Meccanica Coffee75 - Switch Gateron Brown",
+        "tipo": "ClientiStandard"
+    },
+    {
+        "corriere": "DHL",
+        "destinatario": "Giulia Verdi",
+        "id": "CK-1002",
+        "immagine": "",
+        "indirizzo": "Via Dante 5, Milano",
+        "oreConsegnaGarantite": 24,
+        "peso": 0.9,
+        "prodotto": "Tastiera Coffee65 Wireless - Switch Akko Pink",
+        "tipo": "ClientiEspressa"
+    },
+    {
+        "codiceCampagna": "LANCIO2026",
+        "destinatario": "TechKeys_ITA",
+        "id": "CK-1003",
+        "immagine": "",
+        "indirizzo": "Via dei Mille 20, Bologna",
+        "nomeReviewer": "TechKeys_ITA",
+        "peso": 1,
+        "prodotto": "Coffee75 Special Edition - Prototipo",
+        "tipo": "ReviewerSponsor",
+        "valoreProdottoOmaggio": 180
+    },
+    {
+        "destinatario": "Magazzino Coffee Keys",
+        "fornitore": "Gateron Official",
+        "id": "CK-1004",
+        "immagine": "",
+        "indirizzo": "Via dell'Artigianato 8, Padova",
+        "numeroOrdineAcquisto": "PO-2026-0143",
+        "peso": 15,
+        "prodotto": "Switch Gateron Brown (confezione da 110)",
+        "quantitaColli": 20,
+        "tipo": "RifornimentoStock"
+    },
+    {
+        "codiceRMA": "RMA-2026-0087",
+        "copertoDaGaranzia": true,
+        "destinatario": "Fabbrica OEM",
+        "id": "CK-1005",
+        "immagine": "",
+        "indirizzo": "Shenzhen, Cina",
+        "motivoReso": "Case incrinato durante il trasporto",
+        "peso": 1.1,
+        "prodotto": "Tastiera Coffee75 - Case difettoso",
+        "tipo": "ResoFabbrica"
+    },
+    {
+        "accontoVersato": 3500,
+        "dataArrivoPrevista": "2026-10-15",
+        "destinatario": "Magazzino Coffee Keys",
+        "id": "CK-1006",
+        "idLottoProduzione": "GB-LATTE-01",
+        "immagine": "",
+        "indirizzo": "Via dell'Artigianato 8, Padova",
+        "peso": 40,
+        "prodotto": "Keycap Set PBT Coffee Latte - Group Buy",
+        "tipo": "GroupBuyInbound"
+    }
+]

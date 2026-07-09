@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spedizioni>
+    <spedizione>
+        <corriere>BRT</corriere>
+        <destinatario>Marco Bianchi</destinatario>
+        <id>CK-1001</id>
+        <immagine></immagine>
+        <indirizzo>Via Roma 12, Torino</indirizzo>
+        <peso>1.2</peso>
+        <prodotto>Tastiera Meccanica Coffee75 - Switch Gateron Brown</prodotto>
+        <tipo>ClientiStandard</tipo>
+    </spedizione>
+    <spedizione>
+        <corriere>DHL</corriere>
+        <destinatario>Giulia Verdi</destinatario>
+        <id>CK-1002</id>
+        <immagine></immagine>
+        <indirizzo>Via Dante 5, Milano</indirizzo>
+        <oreConsegnaGarantite>24</oreConsegnaGarantite>
+        <peso>0.9</peso>
+        <prodotto>Tastiera Coffee65 Wireless - Switch Akko Pink</prodotto>
+        <tipo>ClientiEspressa</tipo>
+    </spedizione>
+    <spedizione>
+        <codiceCampagna>LANCIO2026</codiceCampagna>
+        <destinatario>TechKeys_ITA</destinatario>
+        <id>CK-1003</id>
+        <immagine></immagine>
+        <indirizzo>Via dei Mille 20, Bologna</indirizzo>
+        <nomeReviewer>TechKeys_ITA</nomeReviewer>
+        <peso>1</peso>
+        <prodotto>Coffee75 Special Edition - Prototipo</prodotto>
+        <tipo>ReviewerSponsor</tipo>
+        <valoreProdottoOmaggio>180</valoreProdottoOmaggio>
+    </spedizione>
+    <spedizione>
+        <destinatario>Magazzino Coffee Keys</destinatario>
+        <fornitore>Gateron Official</fornitore>
+        <id>CK-1004</id>
+        <immagine></immagine>
+        <indirizzo>Via dell'Artigianato 8, Padova</indirizzo>
+        <numeroOrdineAcquisto>PO-2026-0143</numeroOrdineAcquisto>
+        <peso>15</peso>
+        <prodotto>Switch Gateron Brown (confezione da 110)</prodotto>
+        <quantitaColli>20</quantitaColli>
+        <tipo>RifornimentoStock</tipo>
+    </spedizione>
+    <spedizione>
+        <codiceRMA>RMA-2026-0087</codiceRMA>
+        <copertoDaGaranzia>true</copertoDaGaranzia>
+        <destinatario>Fabbrica OEM</destinatario>
+        <id>CK-1005</id>
+        <immagine></immagine>
+        <indirizzo>Shenzhen, Cina</indirizzo>
+        <motivoReso>Case incrinato durante il trasporto</motivoReso>
+        <peso>1.1</peso>
+        <prodotto>Tastiera Coffee75 - Case difettoso</prodotto>
+        <tipo>ResoFabbrica</tipo>
+    </spedizione>
+    <spedizione>
+        <accontoVersato>3500</accontoVersato>
+        <dataArrivoPrevista>2026-10-15</dataArrivoPrevista>
+        <destinatario>Magazzino Coffee Keys</destinatario>
+        <id>CK-1006</id>
+        <idLottoProduzione>GB-LATTE-01</idLottoProduzione>
+        <immagine></immagine>
+        <indirizzo>Via dell'Artigianato 8, Padova</indirizzo>
+        <peso>40</peso>
+        <prodotto>Keycap Set PBT Coffee Latte - Group Buy</prodotto>
+        <tipo>GroupBuyInbound</tipo>
+    </spedizione>
+</spedizioni>
